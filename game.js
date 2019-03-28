@@ -5,10 +5,12 @@ var buttonColors = ["red", "blue", "green", "yellow"];
 var level = 0;
 var start = false;
 
-$(document).keypress(function () {
+$(document).dblclick(function () {
 	if (!start) {
-		$("#level-title").text("Level " + level);
-		nextSequence();
+		setTimeout(function () {
+			$("#level-title").text("Level " + level);
+			nextSequence();
+		}, 500);
 		start = true;
 	}
 });
@@ -37,10 +39,10 @@ function checkAnswer(currentLevel) {
 		console.log("WRONG");
 		playSound("wrong");
 		$("body").addClass("game-over");
-		setTimeout(function() {
+		setTimeout(function () {
 			$("body").removeClass("game-over");
 		}, 200);
-		$("h1").text("Game Over! Press any key to Restart!");
+		$("h1").text("Game Over! Double Click to Restart!");
 		startOver();
 	}
 }
